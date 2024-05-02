@@ -2,7 +2,7 @@ function addFormatsToCart() {
     const paperbackButton = document.evaluate('//a[./span/span[text()="Paperback"]]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     const hardcoverButton = document.evaluate('//a[./span/span[text()="Hardcover"]]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     const kindleButton = document.evaluate('//a[./span/span[text()="Kindle"]]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    const audiobookButton = document.evaluate('//a[./span/span[text()="Audiobook"]]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    const audiobookButton = document.evaluate('//a[.//span[text()=" Audiobook "]]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     
     const baseUrl = "https://www.amazon.com/gp/aws/cart/add.html";
 
@@ -15,8 +15,9 @@ function addFormatsToCart() {
         if (!url.includes('http')) {
             url = window.location.href;
         }
+        console.log(url);
         const match = url.match(/\/dp\/(\w{5,14})\//);
-        return match ? match[1] : nulll
+        return match ? match[1] : null
     };
 
     const buttons = [paperbackButton, audiobookButton, kindleButton, hardcoverButton];
