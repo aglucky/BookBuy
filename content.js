@@ -15,7 +15,6 @@ function addFormatsToCart() {
         if (!url.includes('http')) {
             url = window.location.href;
         }
-        console.log(url);
         const match = url.match(/\/dp\/(\w{5,14})\//);
         return match ? match[1] : null
     };
@@ -23,7 +22,6 @@ function addFormatsToCart() {
     const buttons = [paperbackButton, audiobookButton, kindleButton, hardcoverButton];
     const products = buttons.map(button => {
         const asin = button ? extractASIN(button.href) : null;
-        console.log(asin);
         return { ASIN: asin, Quantity: '1' };
     }).filter(product => product.ASIN !== null);
 
@@ -55,7 +53,7 @@ function addAllFormatsButton() {
 
     if (target) {
         const button = document.createElement('button');
-        button.innerText = 'Add All Versions to Cart'; // Corrected typo from 'innerTexlt' to 'innerText'
+        button.innerText = 'Add All Versions to Cart';
         button.id = 'addAllVersionsBtn';
         button.style.cssText = `
             background-color: #FF9900; /* Bright yellow background */
